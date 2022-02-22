@@ -1,13 +1,30 @@
 /**
+ * TODO: Add your file header
+ * Name: Jiahui Xu, Andrew Wang.
+ * Email: jix049@ucsd.edu, anw011@ucsd.edu
+ * Sources used:None
  * 
+ * This file contains a MyDeque class, which is an implementation for the 
+ * Deque ADT. Elements can be added/removed from the Deque from both ends.
+ * MyDeque is adopted by MyStack and MyQueue.
  */
+
+ /**
+  * This class implements DequeInterface. Elements are stored in the 
+  * instance variable data. It use instance variables rear and front to
+  * keep track of where the elements are in the array. Instance variable
+  * size record how many elements are there in the deque.
+  */
 class MyDeque<E> implements DequeInterface<E> {
     private static final int DEFAULT_CAPACITY = 10;
     Object[] data;
     int size;
     int rear;
     int front;
-
+    /**
+     * Initialize the Object array data with length of initialCapacity.
+     * @param initialCapacity the initial length of the array
+     */
     public MyDeque(int initialCapacity) {
         if (initialCapacity < 0) {
             throw new IllegalArgumentException();
@@ -17,11 +34,15 @@ class MyDeque<E> implements DequeInterface<E> {
         front = 0;
         rear = 0;
     }
-
+    /**
+     * Returns the number of elements that exist in the deque.
+     */
     public int size() {
         return this.size;
     }
-
+    /**
+     * Doubles the current capacity, set to default if zero.
+     */
     public void expandCapacity() {
         if (size == 0) {
             // no elements to move
@@ -47,7 +68,10 @@ class MyDeque<E> implements DequeInterface<E> {
             rear = size - 1;
         }
     }
-
+    /**
+     * Add the specified element to the front of the deque
+     * @param element the new element
+     */
     public void addFirst(E element) {
         // check input and capacity
         if (element == null) {
@@ -70,7 +94,10 @@ class MyDeque<E> implements DequeInterface<E> {
         }
         size++;
     }
-
+    /**
+     * Add the specified element to the rear of the deque
+     * @param element the new element
+     */
     public void addLast(E element) {
         // check input and capacity
         if (element == null) {
@@ -93,7 +120,10 @@ class MyDeque<E> implements DequeInterface<E> {
         }
         size++;
     }
-
+    /**
+     * Removes and returns the element at the front of the deque
+     * @return the removed element
+     */
     public E removeFirst() {
         // check size
         if (this.size == 0) {
@@ -120,7 +150,10 @@ class MyDeque<E> implements DequeInterface<E> {
         this.size--;
         return removeElement;
     }
-
+    /**
+     * Removes and returns the element at the rear of the deque
+     * @return the removed element
+     */
     public E removeLast() {
         // check size
         if (this.size == 0) {
@@ -147,7 +180,10 @@ class MyDeque<E> implements DequeInterface<E> {
         this.size--;
         return removeElement;
     }
-
+    /**
+     * Returns the element at the front of the deque
+     * @return the element at front
+     */
     public E peekFirst() {
         // check size
         if (this.size == 0) {
@@ -155,7 +191,10 @@ class MyDeque<E> implements DequeInterface<E> {
         }
         return (E) data[front];
     }
-
+    /**
+     * Returns the element at the rear of the deque
+     * @return the element at rear
+     */
     public E peekLast() {
         // check size
         if (this.size == 0) {
