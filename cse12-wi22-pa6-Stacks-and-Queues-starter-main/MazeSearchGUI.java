@@ -272,7 +272,8 @@ public class MazeSearchGUI extends JFrame implements ActionListener {
                         nextCell.setVisited();
                         nextCell.setPrevious(currCell);
                         // TODO: add the next cell to the queue
-                        
+                        theQueue.enqueue(nextCell);
+
                     }
                 }
             }
@@ -299,11 +300,11 @@ public class MazeSearchGUI extends JFrame implements ActionListener {
         StackInterface<Cell> theStack = new MyStack<Cell>(
                 cells.length * cells[0].length);
         // TODO: add the cell at row, col to the stack
-
+        theStack.push(cells[row][col]);
         // DFS algorithm
         while (theStack.size() > 0) {
             // TODO: remove the cell from the stack and store it as currCell
-
+            Cell currCell = theStack.pop();
             exploredCells.enqueue(currCell);
             currCell.setVisited();
             // If the visited cell is the finish cell, we stop searching
@@ -323,6 +324,7 @@ public class MazeSearchGUI extends JFrame implements ActionListener {
                             || (nextCell.isEmpty() && !nextCell.isVisited())) {
                         nextCell.setPrevious(currCell);
                         // TODO: add the next cell to the stack
+                        theStack.push(nextCell);
                     }
                 }
             }
@@ -583,8 +585,9 @@ public class MazeSearchGUI extends JFrame implements ActionListener {
     public static void main(String[] args) {
         // Create the mazes. You can experiment with creating your own maze
         // based on the presets defined here.
-        String[][] preset1 = { { EMP, EMP, EMP, EMP }, { EMP, WAL, WAL, WAL },
-                { EMP, EMP, EMP, EMP }, { EMP, WAL, EMP, FIN } };
+        String[][] preset1 = { { EMP, EMP, EMP, EMP, EMP },
+                { EMP, EMP, WAL, WAL, EMP }, { EMP, WAL, EMP, EMP, EMP },
+                { EMP, WAL, WAL, EMP, EMP }, { EMP, EMP, EMP, EMP, FIN } };
         String[][] preset2 = { { EMP, EMP, EMP, EMP, EMP },
                 { EMP, EMP, EMP, WAL, EMP }, { EMP, WAL, WAL, EMP, EMP },
                 { EMP, WAL, EMP, EMP, WAL }, { EMP, WAL, EMP, EMP, FIN } };

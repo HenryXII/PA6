@@ -28,34 +28,39 @@ public class CustomTester {
      */
     @Test
     public void testMyDequeConstructor() {
-        MyDeque<Integer> myDeque = new MyDeque<>(0);
-        assertEquals(0, myDeque.size());
-        assertEquals(myDeque.data.length, 0);
+        MyDeque<Integer> myDeque2 = new MyDeque<>(0);
+        assertEquals(0, myDeque2.size());
+        assertEquals(myDeque2.data.length, 0);
         try {
-            myDeque = new MyDeque<>(-1);
+            myDeque2 = new MyDeque<>(-1);
             fail();
-        } catch(IllegalArgumentException e) {
-            //pass
+        } catch (IllegalArgumentException e) {
+            // pass
         }
     }
+
     /**
      * Test the constructor when initial capacity is positive.
      */
     @Test
     public void testMyDequeConstructor2() {
-        for(int i = 1; i < 1000; i++) {
+        for (int i = 1; i < 1000; i++) {
             MyDeque<String> myDeque2 = new MyDeque<>(i);
-            assertEquals(i, myDeque.size());
-            assertEquals(myDeque.data.length, i);
+            assertEquals(i, myDeque2.size());
+            assertEquals(myDeque2.data.length, i);
         }
     }
 
     /**
-     * Test the expandCapacity method when 
+     * Test the expandCapacity method when initial capacity is 0
      */
     @Test
     public void testMyDequeExpandCapacity() {
-
+        MyDeque<String> myDeque2 = new MyDeque<>(0);
+        myDeque2.expandCapacity();
+        assertEquals(myDeque2.data.length, 10);
+        int size = 3;
+        
     }
 
     /**
