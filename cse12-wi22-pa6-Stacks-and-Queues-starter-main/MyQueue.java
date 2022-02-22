@@ -11,7 +11,9 @@
 
 /**
  * This class implements the Queue ADT using a MyDeque instance variable called
- * theStack.
+ * theStack. Elements are added to the back of the queue and removed from the front
+ * of the queue. 
+ * Instance Variables: MyDeque theQueue.
  */
 public class MyQueue<E> implements QueueInterface<E> {
     MyDeque<E> theQueue;

@@ -2,7 +2,7 @@
  * Name: Andrew Wang, Jiahui Xu.
  * Email: anw011@ucsd.edu jix049@ucsd.edu
  * Sources used: Copilot
- * s
+ * 
  * This file contains a MyStack class, which is an implementation for the Stack
  * ADT based on MyDeque. Elements can be added/removed from the queue in a LIFO
  * ordering.
@@ -10,7 +10,8 @@
 
 /**
  * This class implements the Stack ADT using a MyDeque instance variable called
- * theStack.
+ * theStack. Elements are added to the top of the stack and removed from the
+ * top. Instance Variables: MyDeque theStack.
  */
 public class MyStack<E> implements StackInterface<E> {
     MyDeque<E> theStack;

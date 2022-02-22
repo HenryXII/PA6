@@ -14,6 +14,7 @@
   * instance variable data. It use instance variables rear and front to
   * keep track of where the elements are in the array. Instance variable
   * size record how many elements are there in the deque.
+  * Instance variables: Object[] data, int size, rear, front.
   */
 class MyDeque<E> implements DequeInterface<E> {
     private static final int DEFAULT_CAPACITY = 10;
@@ -51,7 +52,8 @@ class MyDeque<E> implements DequeInterface<E> {
             } else {
                 data = new Object[data.length * 2];
             }
-            // no need to updata front or rear?
+            front = 0;
+            rear = 0;
         } else {
             // move elements
             Object[] newData;
@@ -75,7 +77,7 @@ class MyDeque<E> implements DequeInterface<E> {
     public void addFirst(E element) {
         // check input and capacity
         if (element == null) {
-            throw new IllegalArgumentException();
+            throw new NullPointerException();
         }
         if (this.size == data.length) {
             this.expandCapacity();
@@ -101,7 +103,7 @@ class MyDeque<E> implements DequeInterface<E> {
     public void addLast(E element) {
         // check input and capacity
         if (element == null) {
-            throw new IllegalArgumentException();
+            throw new NullPointerException();
         }
         if (this.size == data.length) {
             this.expandCapacity();
