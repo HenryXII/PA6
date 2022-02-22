@@ -448,12 +448,12 @@ public class CustomTester {
      */
     @Test
     public void testMyStack() {
-        int[] arr = new int[500];
+        int[] arr = new int[5000];
         int top = 0;
         Random r = new Random(1928374912384l);
         MyStack<Integer> myStack = new MyStack<>(0);
         assertTrue(myStack.empty());
-        for (int i = 0; i < 700; i++) {
+        for (int i = 0; i < 7000; i++) {
             if (top == 0)
                 assertTrue(myStack.empty());
             else
@@ -474,12 +474,12 @@ public class CustomTester {
      */
     @Test
     public void testMyQueue() {
-        int[] arr = new int[1000];
+        int[] arr = new int[10000];
         int left = 0;
         int right = 0;
         Random r = new Random(1928374912384l);
         MyQueue<Integer> myQueue = new MyQueue<>(0);
-        for (int i = 0; i < 700; i++) {
+        for (int i = 0; i < 7000; i++) {
             if (right - left == 0)
                 assertTrue(myQueue.empty());
             else
