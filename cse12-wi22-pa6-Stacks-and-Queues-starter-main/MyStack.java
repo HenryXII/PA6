@@ -1,9 +1,8 @@
 /**
- * TODO: Add your file header
- * Name:
- * Email:
- * Sources used: Put "None" if you did not have any external help
- * 
+ * Name: Andrew Wang, Jiahui Xu.
+ * Email: anw011@ucsd.edu jix049@ucsd.edu
+ * Sources used: Copilot
+ * s
  * This file contains a MyStack class, which is an implementation for the Stack
  * ADT based on MyDeque. Elements can be added/removed from the queue in a LIFO
  * ordering.
@@ -22,7 +21,7 @@ public class MyStack<E> implements StackInterface<E> {
      * @param capacity The max amount of elements this data structure can hold.
      */
     public MyStack(int capacity) {
-        theStack=new MyDeque<>(capacity);
+        theStack = new MyDeque<>(capacity);
     }
 
     /**
@@ -32,11 +31,11 @@ public class MyStack<E> implements StackInterface<E> {
      */
     @Override
     public boolean empty() {
-        if (theStack.size()==0){
+        if (theStack.size() == 0) {
             return true;
-        }else{
+        } else {
             return false;
-        }    
+        }
     }
 
     /**
@@ -50,8 +49,8 @@ public class MyStack<E> implements StackInterface<E> {
     }
 
     /**
-     * Removes the element at the top of this StackInterface.
-     * Returns the element removed, or null if there was no such element.
+     * Removes the element at the top of this StackInterface. Returns the
+     * element removed, or null if there was no such element.
      * 
      * @return the element removed, or null if the size was zero.
      */

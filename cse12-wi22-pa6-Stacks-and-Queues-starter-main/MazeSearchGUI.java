@@ -64,8 +64,8 @@ public class MazeSearchGUI extends JFrame implements ActionListener {
 
     // Offset to tell which order to explore neighbors (N, E, S, W) or
     // (up, right, down, left)
-    private final int[][] NEIGHBOR_ORDER = { { -1, 0 }, { 0, 1 },
-            { 1, 0 }, { 0, -1 } };
+    private final int[][] NEIGHBOR_ORDER = { { -1, 0 }, { 0, 1 }, { 1, 0 },
+            { 0, -1 } };
 
     // Colors used for the cells
     private final Color COLOR_EMPTY = Color.DARK_GRAY;
@@ -122,8 +122,8 @@ public class MazeSearchGUI extends JFrame implements ActionListener {
 
         // create a new GUI with a grid of cells
         JPanel cellPanel = new JPanel();
-        cellPanel.setPreferredSize(new Dimension(CELL_SIZE * width,
-                CELL_SIZE * height));
+        cellPanel.setPreferredSize(
+                new Dimension(CELL_SIZE * width, CELL_SIZE * height));
         cellPanel.setLayout(new GridLayout(height, width));
 
         for (int r = 0; r < height; r++) {
@@ -145,8 +145,8 @@ public class MazeSearchGUI extends JFrame implements ActionListener {
     }
 
     /**
-     * Private helper to set off an animation where
-     * each change is delayed for DELAY milliseconds
+     * Private helper to set off an animation where each change is delayed for
+     * DELAY milliseconds
      */
     private void animateSlowly() {
         if (toAnimate == null)
@@ -157,8 +157,8 @@ public class MazeSearchGUI extends JFrame implements ActionListener {
     }
 
     /**
-     * Animate one cell from the toAnimate queue and
-     * stop the timer when toAnimate is empty
+     * Animate one cell from the toAnimate queue and stop the timer when
+     * toAnimate is empty
      * 
      * @param e the action event triggered
      */
@@ -193,8 +193,8 @@ public class MazeSearchGUI extends JFrame implements ActionListener {
     }
 
     /**
-     * Update (animate) the visited cells on the maze GUI board based on
-     * the selected start cell.
+     * Update (animate) the visited cells on the maze GUI board based on the
+     * selected start cell.
      * 
      * @param row row of the selected start cell
      * @param col column of the selected start cell
@@ -226,8 +226,8 @@ public class MazeSearchGUI extends JFrame implements ActionListener {
      * @return true if the cell is within the bounds, otherwise false
      */
     private boolean validCell(int row, int col) {
-        return (row >= 0) && (row < cells.length) && (col >= 0) &&
-                (col < cells[row].length);
+        return (row >= 0) && (row < cells.length) && (col >= 0)
+                && (col < cells[row].length);
     }
 
     /**
@@ -237,19 +237,18 @@ public class MazeSearchGUI extends JFrame implements ActionListener {
      * 
      * @param row row of the start cell
      * @param col col of the start cell
-     * @return queue of explored cells (in the order of exploration). First
-     *         cell should be the start cell and last cell should be the
-     *         finish cell.
+     * @return queue of explored cells (in the order of exploration). First cell
+     *         should be the start cell and last cell should be the finish cell.
      */
     public QueueInterface<Cell> animateCellsBFS(int row, int col) {
         // Queue to store explored cells in the order of exploration
-        QueueInterface<Cell> exploredCells = new MyQueue<Cell>(cells.length *
-                cells[0].length);
+        QueueInterface<Cell> exploredCells = new MyQueue<Cell>(
+                cells.length * cells[0].length);
         // Queue for BFS algorithm
-        QueueInterface<Cell> theQueue = new MyQueue<Cell>(cells.length *
-                cells[0].length);
+        QueueInterface<Cell> theQueue = new MyQueue<Cell>(
+                cells.length * cells[0].length);
         // TODO: add the cell at row, col to the queue
-
+        
         // BFS algorithm
         while (theQueue.size() > 0) {
             // TODO: remove the cell from the queue and store it as currCell
@@ -265,11 +264,11 @@ public class MazeSearchGUI extends JFrame implements ActionListener {
             // Traverse possible neighbor cells in N, E, S, W order
             for (int[] offset : NEIGHBOR_ORDER) {
                 if (validCell(cellRow + offset[0], cellCol + offset[1])) {
-                    Cell nextCell = cells[cellRow + offset[0]][cellCol +
-                            offset[1]];
+                    Cell nextCell = cells[cellRow + offset[0]][cellCol
+                            + offset[1]];
                     // Find valid, unvisited neighbors and add to queue
-                    if (nextCell.isFinish() || (nextCell.isEmpty()
-                            && !nextCell.isVisited())) {
+                    if (nextCell.isFinish()
+                            || (nextCell.isEmpty() && !nextCell.isVisited())) {
                         nextCell.setVisited();
                         nextCell.setPrevious(currCell);
                         // TODO: add the next cell to the queue
@@ -288,17 +287,16 @@ public class MazeSearchGUI extends JFrame implements ActionListener {
      * 
      * @param row row of the start cell
      * @param col col of the start cell
-     * @return queue of explored cells (in the order of exploration). First
-     *         cell should be the start cell and last cell should be the
-     *         finish cell.
+     * @return queue of explored cells (in the order of exploration). First cell
+     *         should be the start cell and last cell should be the finish cell.
      */
     public QueueInterface<Cell> animateCellsDFS(int row, int col) {
         // Queue to store explored cells in the order of exploration
-        QueueInterface<Cell> exploredCells = new MyQueue<Cell>(cells.length *
-                cells[0].length);
+        QueueInterface<Cell> exploredCells = new MyQueue<Cell>(
+                cells.length * cells[0].length);
         // Stack for DFS algorithm
-        StackInterface<Cell> theStack = new MyStack<Cell>(cells.length *
-                cells[0].length);
+        StackInterface<Cell> theStack = new MyStack<Cell>(
+                cells.length * cells[0].length);
         // TODO: add the cell at row, col to the stack
 
         // DFS algorithm
@@ -317,11 +315,11 @@ public class MazeSearchGUI extends JFrame implements ActionListener {
             // Traverse possible neighbor cells in N, E, S, W order
             for (int[] offset : NEIGHBOR_ORDER) {
                 if (validCell(cellRow + offset[0], cellCol + offset[1])) {
-                    Cell nextCell = cells[cellRow + offset[0]][cellCol +
-                            offset[1]];
+                    Cell nextCell = cells[cellRow + offset[0]][cellCol
+                            + offset[1]];
                     // Find valid, unvisited neighbors and add to stack
-                    if (nextCell.isFinish() || (nextCell.isEmpty()
-                            && !nextCell.isVisited())) {
+                    if (nextCell.isFinish()
+                            || (nextCell.isEmpty() && !nextCell.isVisited())) {
                         nextCell.setPrevious(currCell);
                         // TODO: add the next cell to the stack
                     }
@@ -383,21 +381,21 @@ public class MazeSearchGUI extends JFrame implements ActionListener {
 
             // Set the cell color according to the cell type
             switch (cellType) {
-                case EMPTY:
-                    setBackground(COLOR_EMPTY);
-                    break;
-                case START:
-                    setBackground(COLOR_START);
-                    setText(STA);
-                    break;
-                case FINISH:
-                    setBackground(COLOR_FINISH);
-                    setText(FIN);
-                    break;
-                case WALL:
-                    setBackground(COLOR_WALL);
-                    setText(WAL);
-                    break;
+            case EMPTY:
+                setBackground(COLOR_EMPTY);
+                break;
+            case START:
+                setBackground(COLOR_START);
+                setText(STA);
+                break;
+            case FINISH:
+                setBackground(COLOR_FINISH);
+                setText(FIN);
+                break;
+            case WALL:
+                setBackground(COLOR_WALL);
+                setText(WAL);
+                break;
             }
             setOpaque(true);
             addMouseListener(this); // Buttons listen for their own actions
@@ -514,8 +512,8 @@ public class MazeSearchGUI extends JFrame implements ActionListener {
         }
 
         /**
-         * When a left-click occurs, check if the cell can be click on.
-         * If so, set it to START and trigger the search algorithm + animation
+         * When a left-click occurs, check if the cell can be click on. If so,
+         * set it to START and trigger the search algorithm + animation
          * 
          * @param e the MouseEvent triggered
          */
@@ -584,19 +582,11 @@ public class MazeSearchGUI extends JFrame implements ActionListener {
     public static void main(String[] args) {
         // Create the mazes. You can experiment with creating your own maze
         // based on the presets defined here.
-        String[][] preset1 = {
-                { EMP, EMP, EMP, EMP },
-                { EMP, WAL, WAL, WAL },
-                { EMP, EMP, EMP, EMP },
-                { EMP, WAL, EMP, FIN }
-        };
-        String[][] preset2 = {
-                { EMP, EMP, EMP, EMP, EMP },
-                { EMP, EMP, EMP, WAL, EMP },
-                { EMP, WAL, WAL, EMP, EMP },
-                { EMP, WAL, EMP, EMP, WAL },
-                { EMP, WAL, EMP, EMP, FIN }
-        };
+        String[][] preset1 = { { EMP, EMP, EMP, EMP }, { EMP, WAL, WAL, WAL },
+                { EMP, EMP, EMP, EMP }, { EMP, WAL, EMP, FIN } };
+        String[][] preset2 = { { EMP, EMP, EMP, EMP, EMP },
+                { EMP, EMP, EMP, WAL, EMP }, { EMP, WAL, WAL, EMP, EMP },
+                { EMP, WAL, EMP, EMP, WAL }, { EMP, WAL, EMP, EMP, FIN } };
         String[][] preset3 = {
                 { EMP, EMP, EMP, EMP, EMP, EMP, EMP, EMP, EMP, EMP },
                 { EMP, EMP, EMP, EMP, EMP, EMP, EMP, EMP, EMP, EMP },
@@ -607,14 +597,13 @@ public class MazeSearchGUI extends JFrame implements ActionListener {
                 { EMP, EMP, EMP, EMP, EMP, EMP, EMP, EMP, EMP, EMP },
                 { EMP, EMP, EMP, EMP, EMP, EMP, EMP, EMP, EMP, EMP },
                 { EMP, EMP, EMP, EMP, EMP, EMP, EMP, EMP, FIN, EMP },
-                { EMP, EMP, EMP, EMP, EMP, EMP, EMP, EMP, EMP, EMP },
-        };
+                { EMP, EMP, EMP, EMP, EMP, EMP, EMP, EMP, EMP, EMP }, };
 
         // Check for correct number of valid arguments
         if (args.length < MIN_ARGS) {
             System.out.println("Invalid arguments.");
-            System.out.println("Usage: java MazeSearchGUI" +
-                    " <preset maze number: 1-3> <\"BFS\" or \"DFS\">");
+            System.out.println("Usage: java MazeSearchGUI"
+                    + " <preset maze number: 1-3> <\"BFS\" or \"DFS\">");
             System.out.println("Example: java MazeSearchGUI \"DFS\"");
 
             System.exit(1);
@@ -624,20 +613,19 @@ public class MazeSearchGUI extends JFrame implements ActionListener {
 
         // Select the maze preset based on the argument
         switch (Integer.parseInt(args[0])) {
-            case 1:
-                maze = preset1;
-                break;
-            case 2:
-                maze = preset2;
-                break;
-            case 3:
-                maze = preset3;
-                break;
-            default:
-                maze = preset1;
+        case 1:
+            maze = preset1;
+            break;
+        case 2:
+            maze = preset2;
+            break;
+        case 3:
+            maze = preset3;
+            break;
+        default:
+            maze = preset1;
         }
-        new MazeSearchGUI(
-                maze, // preset maze number
+        new MazeSearchGUI(maze, // preset maze number
                 args[1]); // "BFS" or "DFS"
     }
 }

@@ -1,36 +1,57 @@
+
 /**
- * TODO: Add your file header
- * Name:
- * ID:
- * Email:
- * Sources used: Put "None" if you did not have any external help
- * Some example of sources used would be Tutors, Zybooks, and Lecture Slides
+ * Name: Andrew Wang, Jiahui Xu.
+ * Email: anw011@ucsd.edu jix049@ucsd.edu
+ * Sources used: Copilot
  * 
- * 2-4 sentence file description here
+ * This file is a tester that contains custom test cases for MyDeque, MyQueue,
+ * and MyStack. The tests in this file are not contained in PublicTester and 
+ * this file should be considered more comprehensive. Tests for various edge 
+ * cases and corner cases are included.
  */
 
 import org.junit.*;
 import static org.junit.Assert.*;
 
+import java.beans.Transient;
+
 /**
- * TODO: Add your class header
- * 
- * IMPORTANT: Do not change the method names and points are awarded
- * only if your test cases cover cases that the public tester file
- * does not take into account.
+ * This class contains custom test cases for MyDeque, MyQueue, and MyStack. The
+ * tests in this file are not contained in PublicTester and this file should be
+ * considered more comprehensive. Tests for various edge cases and corner cases
+ * are included.
  */
 public class CustomTester {
     // ----------------MyDeque class----------------
     /**
-     * Test the constructor when [TODO: fill in a possible edge case here]
+     * Test the constructor when initial capacity is 0 or negative.
      */
     @Test
     public void testMyDequeConstructor() {
-
+        MyDeque<Integer> myDeque = new MyDeque<>(0);
+        assertEquals(0, myDeque.size());
+        assertEquals(myDeque.data.length, 0);
+        try {
+            myDeque = new MyDeque<>(-1);
+            fail();
+        } catch(IllegalArgumentException e) {
+            //pass
+        }
+    }
+    /**
+     * Test the constructor when initial capacity is positive.
+     */
+    @Test
+    public void testMyDequeConstructor2() {
+        for(int i = 1; i < 1000; i++) {
+            MyDeque<String> myDeque2 = new MyDeque<>(i);
+            assertEquals(i, myDeque.size());
+            assertEquals(myDeque.data.length, i);
+        }
     }
 
     /**
-     * Test the expandCapacity method when [TODO]
+     * Test the expandCapacity method when 
      */
     @Test
     public void testMyDequeExpandCapacity() {
@@ -73,7 +94,7 @@ public class CustomTester {
      * Test the peekFirst method when [TODO]
      */
     @Test
-    public void testPeekFirst(){
+    public void testPeekFirst() {
 
     }
 
@@ -81,7 +102,7 @@ public class CustomTester {
      * Test the peekLast method when [TODO]
      */
     @Test
-    public void testPeekLast(){
+    public void testPeekLast() {
 
     }
 
@@ -90,7 +111,7 @@ public class CustomTester {
      * Test MyStack when [TODO]
      */
     @Test
-    public void testMyStack(){
+    public void testMyStack() {
         // You can test any method from MyStack or a combination of methods
     }
 
@@ -99,7 +120,7 @@ public class CustomTester {
      * Test MyQueue when [TODO]
      */
     @Test
-    public void testMyQueue(){
+    public void testMyQueue() {
         // You can test any method from MyQueue or a combination of methods
     }
 }

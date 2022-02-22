@@ -1,8 +1,8 @@
 /**
  * TODO: Add your file header
- * Name:
- * Email:
- * Sources used: Put "None" if you did not have any external help
+ * Name: Andrew Wang, Jiahui Xu.
+ * Email: anw011@ucsd.edu jix049@ucsd.edu
+ * Sources used: Copilot
  * 
  * This file contains a MyQueue class, which is an implementation for the Queue
  * ADT based on MyDeque. Elements can be added/removed from the queue in a FIFO
@@ -22,7 +22,7 @@ public class MyQueue<E> implements QueueInterface<E> {
      * @param capacity The max amount of elements this data structure can hold.
      */
     public MyQueue(int capacity) {
-        theQueue=new MyDeque<>(capacity);
+        theQueue = new MyDeque<>(capacity);
     }
 
     /**
@@ -32,9 +32,9 @@ public class MyQueue<E> implements QueueInterface<E> {
      */
     @Override
     public boolean empty() {
-        if(theQueue.size()==0){
+        if (theQueue.size() == 0) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
@@ -50,9 +50,8 @@ public class MyQueue<E> implements QueueInterface<E> {
     }
 
     /**
-     * Removes the element at the head of this MyQueue.
-     * Returns the element removed, or null if there was no such
-     * element.
+     * Removes the element at the head of this MyQueue. Returns the element
+     * removed, or null if there was no such element.
      * 
      * @return the element removed, or null if the size was zero.
      */
@@ -62,8 +61,8 @@ public class MyQueue<E> implements QueueInterface<E> {
     }
 
     /**
-     * Returns the element at the head of this MyQueue,
-     * or null if there was no such element.
+     * Returns the element at the head of this MyQueue, or null if there was no
+     * such element.
      * 
      * @return the element at the head, or null if the size was zero.
      */
