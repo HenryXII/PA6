@@ -248,11 +248,11 @@ public class MazeSearchGUI extends JFrame implements ActionListener {
         QueueInterface<Cell> theQueue = new MyQueue<Cell>(
                 cells.length * cells[0].length);
         // TODO: add the cell at row, col to the queue
-        
-        // BFS algorithm
+        theQueue.enqueue(cells[row][col]);
+        // BFS algorithm henry
         while (theQueue.size() > 0) {
             // TODO: remove the cell from the queue and store it as currCell
-
+            Cell currCell = theQueue.dequeue();
             exploredCells.enqueue(currCell);
             // If the visited cell is the finish cell, we stop searching
             if (currCell.isFinish()) {
@@ -272,6 +272,7 @@ public class MazeSearchGUI extends JFrame implements ActionListener {
                         nextCell.setVisited();
                         nextCell.setPrevious(currCell);
                         // TODO: add the next cell to the queue
+                        
                     }
                 }
             }
