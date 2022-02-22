@@ -585,9 +585,10 @@ public class MazeSearchGUI extends JFrame implements ActionListener {
     public static void main(String[] args) {
         // Create the mazes. You can experiment with creating your own maze
         // based on the presets defined here.
-        String[][] preset1 = { { EMP, EMP, EMP, EMP, EMP },
-                { EMP, EMP, WAL, WAL, EMP }, { EMP, WAL, EMP, EMP, EMP },
-                { EMP, WAL, WAL, EMP, EMP }, { EMP, EMP, EMP, EMP, FIN } };
+        String[][] preset1 = {{ EMP, EMP, EMP, EMP },
+        { EMP, WAL, WAL, WAL },
+        { EMP, EMP, EMP, EMP },
+        { EMP, WAL, EMP, FIN }};
         String[][] preset2 = { { EMP, EMP, EMP, EMP, EMP },
                 { EMP, EMP, EMP, WAL, EMP }, { EMP, WAL, WAL, EMP, EMP },
                 { EMP, WAL, EMP, EMP, WAL }, { EMP, WAL, EMP, EMP, FIN } };
