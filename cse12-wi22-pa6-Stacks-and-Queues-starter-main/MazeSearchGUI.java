@@ -589,11 +589,10 @@ public class MazeSearchGUI extends JFrame implements ActionListener {
         { EMP, WAL, WAL, WAL },
         { EMP, EMP, EMP, EMP },
         { EMP, WAL, EMP, FIN }};
-        String[][] preset2 = { { EMP, EMP, EMP, EMP, EMP },
-                { EMP, EMP, EMP, WAL, EMP }, { EMP, WAL, WAL, EMP, EMP },
-                { EMP, WAL, EMP, EMP, WAL }, { EMP, WAL, EMP, EMP, FIN } };
-        String[][] preset3 = {
-                { EMP, EMP, EMP, EMP, EMP, EMP, EMP, EMP, EMP, EMP },
+        String[][] preset2 = { { EMP, EMP, EMP, WAL, EMP }, { EMP, WAL, WAL
+            { EMP, WAL, EMP, EMP, WAL }, { EMP, WAL, EMP, EMP, FIN } 
+            [] preset3 = {
+            { EMP, EMP, EMP, EMP, EMP, EMP, EMP, EMP, EMP, EMP },
                 { EMP, EMP, EMP, EMP, EMP, EMP, EMP, EMP, EMP, EMP },
                 { EMP, EMP, EMP, EMP, EMP, EMP, EMP, EMP, EMP, EMP },
                 { EMP, EMP, EMP, EMP, EMP, EMP, EMP, EMP, EMP, EMP },
@@ -604,21 +603,23 @@ public class MazeSearchGUI extends JFrame implements ActionListener {
                 { EMP, EMP, EMP, EMP, EMP, EMP, EMP, EMP, FIN, EMP },
                 { EMP, EMP, EMP, EMP, EMP, EMP, EMP, EMP, EMP, EMP }, };
 
-        // Check for correct number of valid arguments
-        if (args.length < MIN_ARGS) {
-            System.out.println("Invalid arguments.");
-            System.out.println("Usage: java MazeSearchGUI"
-                    + " <preset maze number: 1-3> <\"BFS\" or \"DFS\">");
-            System.out.println("Example: java MazeSearchGUI \"DFS\"");
 
-            System.exit(1);
-        }
+    if (args.length < MIN_ARGS) {
+       System.out.rntln("Inv
+    l
+        System.out.println("Usage: java MazeSearc
+                + " <preset maze number: 1-3> <\"BFS\"
+                ut.println("Example: java MazeSearchGUI \"DFS\"");
+        
 
-        String[][] maze; // maze to visualize and search
+        
+    
 
-        // Select the maze preset based on the argument
-        switch (Integer.parseInt(args[0])) {
-        case 1:
+    
+
+    switch (Integer.parseInt(args[0])) {
+    case 1
+    
             maze = preset1;
             break;
         case 2:
@@ -630,7 +631,5 @@ public class MazeSearchGUI extends JFrame implements ActionListener {
         default:
             maze = preset1;
         }
-        new MazeSearchGUI(maze, // preset maze number
-                args[1]); // "BFS" or "DFS"
-    }
-}
+        n        args[1]); // "BFS" or "DFS"
+    
