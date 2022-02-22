@@ -14,6 +14,7 @@ import org.junit.*;
 import static org.junit.Assert.*;
 
 import java.beans.Transient;
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -47,7 +48,7 @@ public class CustomTester {
     public void testMyDequeConstructor2() {
         for (int i = 1; i < 1000; i++) {
             MyDeque<String> myDeque2 = new MyDeque<>(i);
-            assertEquals(i, myDeque2.size());
+            assertEquals(0, myDeque2.size());
             assertEquals(myDeque2.data.length, i);
         }
     }
@@ -62,13 +63,70 @@ public class CustomTester {
         myDeque2.expandCapacity();
         assertEquals(myDeque2.data.length, 10);
         String[] arr = new String[100];
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 50; i++) {
             arr[i] = "";
             int len = r.nextInt(0, 40);
-            for(int j = 0; j < len; j++) {
-                
-            }
+            for (int j = 0; j < len; j++)
+                arr[i] += (char) (r.nextInt(0, 26) + 'a');
+
+            myDeque2.addLast(arr[i]);
         }
+        myDeque2.expandCapacity();
+        assertEquals(50, myDeque2.size());
+        assertEquals(myDeque2.data.length, 160);
+        for (int i = 0; i < arr.length; i++)
+            assertEquals(myDeque2.data[i], arr[i]);
+
+        myDeque2 = new MyDeque<>(0);
+        myDeque2.addLast(arr[0]);
+        for (int i = 1; i < 8; i++) {
+            myDeque2.addLast(arr[i]);
+            myDeque2.removeFirst();
+        }
+        for (int i = 8; i < 10; i++) {
+            myDeque2.addLast(arr[i]);
+        }
+        myDeque2.expandCapacity();
+        for (int i = 7; i < 10; i++) {
+            assertEquals(myDeque2.data[i - 7], arr[i]);
+        }
+        for (int i = 10; i < 20; i++) {
+            myDeque2.addLast(arr[i]);
+        }
+        for (int i = 20; i < 30; i++) {
+            myDeque2.addFirst(arr[i]);
+        }
+        for (int i = 29; i >= 20; i--) {
+            assertEquals(myDeque2.removeFirst(), arr[i]);
+        }
+        for (int i = 19; i >= 10; i--) {
+            assertEquals(myDeque2.removeLast(), arr[i]);
+        }
+        for (int i = 7; i < 10; i++) {
+            assertEquals(myDeque2.removeFirst(), arr[i]);
+        }
+
+        myDeque2 = new MyDeque<>(0);
+        myDeque2.addLast(arr[0]);
+        for (int i = 1; i < 8; i++) {
+            myDeque2.addLast(arr[i]);
+            myDeque2.removeFirst();
+        }
+        for (int i = 8; i < 10; i++) {
+            myDeque2.addLast(arr[i]);
+        }
+        while (myDeque2.size != 0) {
+            myDeque2.removeFirst();
+        }
+        myDeque2.expandCapacity();
+        assertEquals(0, myDeque2.size());
+        assertEquals(myDeque2.data.length, 20);
+        // assertEquals(myDeque2.front, 0);
+        // assertEquals(myDeque2.rear, 0);
+        for (int i = 10; i < 20; i++)
+            myDeque2.addLast(arr[i]);
+        for (int i = 0; i < 10; i++)
+            assertEquals(myDeque2.data[i], arr[i + 10]);
     }
 
     /**
