@@ -65,7 +65,9 @@ public class CustomTester {
         for (int i = 0; i < 100; i++) {
             arr[i] = "";
             int len = r.nextInt(0, 40);
-            for(int i = 0; i <)
+            for(int j = 0; j < len; j++) {
+                
+            }
         }
     }
 
