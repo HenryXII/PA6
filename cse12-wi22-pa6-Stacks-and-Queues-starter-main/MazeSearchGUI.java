@@ -64,8 +64,8 @@ public class MazeSearchGUI extends JFrame implements ActionListener {
 
     // Offset to tell which order to explore neighbors (N, E, S, W) or
     // (up, right, down, left)
-    private final int[][] NEIGHBOR_ORDER = { { -1, 0 }, { 0, 1 }, { 1, 0 },
-            { 0, -1 } };
+    private final int[][] NEIGHBOR_ORDER = { { -1, 0 }, { 1, 0 }, { 0, -1 },
+            { 0, 1 } };
 
     // Colors used for the cells
     private final Color COLOR_EMPTY = Color.DARK_GRAY;
@@ -588,9 +588,12 @@ public class MazeSearchGUI extends JFrame implements ActionListener {
         String[][] preset1 = { { EMP, EMP, EMP, EMP, EMP },
                 { EMP, EMP, WAL, WAL, EMP }, { EMP, WAL, EMP, EMP, EMP },
                 { EMP, WAL, WAL, EMP, EMP }, { EMP, EMP, EMP, EMP, FIN } };
-        String[][] preset2 = { { EMP, EMP, EMP, EMP, EMP },
-                { EMP, EMP, EMP, WAL, EMP }, { EMP, WAL, WAL, EMP, EMP },
-                { EMP, WAL, EMP, EMP, WAL }, { EMP, WAL, EMP, EMP, FIN } };
+        String[][] preset2 = { 
+                { EMP, EMP, EMP, EMP, EMP },
+                { EMP, EMP, EMP, WAL, EMP }, 
+                { EMP, WAL, WAL, EMP, EMP },
+                { EMP, WAL, EMP, EMP, WAL }, 
+                { EMP, WAL, EMP, EMP, FIN } };
         String[][] preset3 = {
                 { EMP, EMP, EMP, EMP, EMP, EMP, EMP, EMP, EMP, EMP },
                 { EMP, EMP, EMP, EMP, EMP, EMP, EMP, EMP, EMP, EMP },

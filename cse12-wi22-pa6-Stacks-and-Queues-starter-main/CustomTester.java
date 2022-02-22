@@ -14,6 +14,7 @@ import org.junit.*;
 import static org.junit.Assert.*;
 
 import java.beans.Transient;
+import java.util.Random;
 
 /**
  * This class contains custom test cases for MyDeque, MyQueue, and MyStack. The
@@ -57,10 +58,15 @@ public class CustomTester {
     @Test
     public void testMyDequeExpandCapacity() {
         MyDeque<String> myDeque2 = new MyDeque<>(0);
+        Random r = new Random(79813278949871342l);
         myDeque2.expandCapacity();
         assertEquals(myDeque2.data.length, 10);
-        int size = 3;
-        
+        String[] arr = new String[100];
+        for (int i = 0; i < 100; i++) {
+            arr[i] = "";
+            int len = r.nextInt(0, 40);
+            for(int i = 0; i <)
+        }
     }
 
     /**
